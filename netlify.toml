@@ -1,0 +1,4 @@
+[build]
+base = "anywherefitness/"
+publish = "anywherefitness/build/"
+command = "yarn build"
