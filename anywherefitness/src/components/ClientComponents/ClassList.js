@@ -13,6 +13,8 @@ class ClassList extends React.Component {
         return (
             <div>
                 <Class />
+                <Class />
+                <Class />
             </div>
         )
     }
