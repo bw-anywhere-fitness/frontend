@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
+import InstructorHome from './components/InstructorHome';
 import Login from './components/Login';
 import ClientView from './components/ClientComponents/ClientView';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import PrivateRoute from './PrivateRoute';
+import ClassForm from './components/ClassForm/ClassForm';
 
 function App() {
   return (
@@ -21,6 +23,9 @@ function App() {
           </li>
         </ul>
 
+      <Route exact path="/login" component={Login}  />
+      <PrivateRoute exact path="/instructor" component={InstructorHome} />
+      <PrivateRoute exact path="/instructor/addclass" component={ClassForm} />  
       <Route path="/login" component={Login}  />
       <Route path="/clientview" component={ClientView} />
       {/* below line commented out for now */}

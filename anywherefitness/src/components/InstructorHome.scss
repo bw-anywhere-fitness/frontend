@@ -1,0 +1,86 @@
+.instructor-home-container {
+    font-family: "Oxygen";
+    
+    .navigation {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 70px;
+        grid-template-areas: "logo  navigation";
+        background: #29B6F6;
+
+        h2 {
+            grid-area: logo;
+            justify-self: start;
+            align-self: center;
+            font-size: 1.4rem;
+            font-weight: normal;
+            margin-left: 15%;
+        }
+
+        nav {
+            grid-area: navigation;
+            justify-self: center;
+            align-self: center;
+
+            .nav-item {
+                padding: 10px;
+                border-radius: 5px;
+            }
+
+            .classes {
+                margin-right: 20px;
+                background: #588AFF;
+                color: white;
+                text-decoration: none;
+            }
+
+            .add-class {
+                background: #FFEE58;
+                color: black;
+                text-decoration: none;
+            }
+        }
+    } //navigation
+
+    .classes-container {
+        background: #E5F2F8;
+        padding: 50px 100px;
+        height: 100vh;
+
+        .class-element {
+            height: 335px;
+            width: 300px;
+            border: 1px solid black;
+            border-radius: 10px;
+            background: #E2E6E9;
+
+            img {
+                height: auto;
+                width: 100%;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+            }
+
+            .class-element-content {
+                padding: 10px;
+
+                .class-date {
+                    color: #5B5D5E;
+                }
+            }
+
+            .class-element-buttons {
+                padding-left: 10px;
+                
+                button {
+                    background: #FF0000;
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    margin-right: 20px;
+                    padding: 5px;
+                }
+            }
+        }
+    }
+}
