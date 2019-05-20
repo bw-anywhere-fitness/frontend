@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import InstructorHome from './components/InstructorHome';
 import Login from './components/Login';
+import ClientView from './components/ClientComponents/ClientView';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import PrivateRoute from './PrivateRoute';
@@ -15,6 +16,9 @@ function App() {
             <Link to="/login">Login</Link>
           </li>
           <li>
+            <Link to="/clientview">Client</Link>
+          </li>
+          <li>
             <Link to="/PLACEHOLDER">PLACEHOLDER</Link>
           </li>
         </ul>
@@ -22,8 +26,11 @@ function App() {
       <Route exact path="/login" component={Login}  />
       <PrivateRoute exact path="/instructor" component={InstructorHome} />
       <PrivateRoute exact path="/instructor/addclass" component={ClassForm} />  
+      <Route path="/login" component={Login}  />
+      <Route path="/clientview" component={ClientView} />
       {/* below line commented out for now */}
       {/* <PrivateRoute exact path="/PLACEHOLDER" component={PLACEHOLDER} />   */}
+
     </Router>
   );
 }
