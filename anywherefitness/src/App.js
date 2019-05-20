@@ -18,7 +18,8 @@ function App() {
         </ul>
 
       <Route path="/login" component={Login}  />
-      <PrivateRoute exact path="/PLACEHOLDER" component={PLACEHOLDER} />  
+      {/* below line commented out for now */}
+      {/* <PrivateRoute exact path="/PLACEHOLDER" component={PLACEHOLDER} />   */}
     </Router>
   );
 }
