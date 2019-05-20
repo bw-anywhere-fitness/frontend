@@ -5,6 +5,7 @@ import "./InstructorHome.scss";
 import { connect } from "react-redux";
 // import Friend from "./Friend";
 import { NavLink, Link } from "react-router-dom";
+import ClassComponent from "./ClassComponent"
 
 import axios from "axios"
 
@@ -13,9 +14,9 @@ class InstructorHome extends React.Component {
     super(props);
     this.state = {
       newClass: {
-        name: "",
-        age: "",
-        email: ""
+        image: "",
+        title: "",
+        date: ""
       }
     };
   }
@@ -50,13 +51,16 @@ class InstructorHome extends React.Component {
         <div className="navigation">
           <h2>Hello, {this.props.name}</h2>
           <nav>
-            <Link exact to="/instructor/classes">
+            <Link className="classes nav-item" exact to="/instructor/">
               Your classes
             </Link>
-            <Link exact to="/instructor/addclass">
+            <Link className="add-class nav-item" exact to="/instructor/addclass">
               Add class
             </Link>
           </nav>
+        </div>
+        <div className="classes-container">
+          {this.props.classes.map(classElement => <ClassComponent classProp={classElement}/>)}
         </div>
       </div>
     );

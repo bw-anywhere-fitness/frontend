@@ -18,8 +18,10 @@ function App() {
           </li>
         </ul>
 
-      <Route path="/login" component={Login}  />
+      <Route exact path="/login" component={Login}  />
       <PrivateRoute exact path="/instructor" component={InstructorHome} />  
+      {/* below line commented out for now */}
+      {/* <PrivateRoute exact path="/PLACEHOLDER" component={PLACEHOLDER} />   */}
     </Router>
   );
 }
