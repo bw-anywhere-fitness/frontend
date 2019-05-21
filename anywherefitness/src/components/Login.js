@@ -1,9 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import { login } from '../actions';
-import Signup from './Signup';
+
 
 
 class Login extends React.Component {
@@ -28,13 +27,14 @@ class Login extends React.Component {
         this.props.login(this.state.credentials)
             .then(() => {
                 this.props.history.push('/');
+                // this.props.history.push('/clientview');
             })
     }
 
     render() {
         return (
-            <Router>
             <form onSubmit={this.login}>
+                <h1>Login</h1>
                 <input
                     type="text"
                     name="username"
@@ -49,9 +49,6 @@ class Login extends React.Component {
                 />
                 <button>Log In</button>
             </form>
-            <Link exact to="/signup">Sign up</Link>
-            <Route path="/signup" component={Signup} />
-            </Router>
         )
     }
 }

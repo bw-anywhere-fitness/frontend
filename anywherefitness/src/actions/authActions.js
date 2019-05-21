@@ -9,7 +9,6 @@ export const signup = creds => dispatch => {
     return Axios.post('https://anywhere-fitness.herokuapp.com/auth/register', creds)
         .then(res => {
             console.log(res);
-            // NEED TO CONFIRM data structure coming back
             localStorage.setItem('token', res.data.token)
             localStorage.setItem('id', res.data.id)
             dispatch({ type: SIGNUP_SUCCESS, payload: res.data.token })
@@ -28,7 +27,6 @@ export const login = creds => dispatch => {
     return Axios.post('https://anywhere-fitness.herokuapp.com/auth/login', creds)
         .then(res => {
             console.log(res);
-            // NEED TO CONFIRM data structure coming back
             localStorage.setItem('token', res.data.token)
             localStorage.setItem('id', res.data.id)
             dispatch({ type: LOGIN_SUCCESS, payload: res.data.token })
