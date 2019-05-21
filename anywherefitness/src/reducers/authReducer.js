@@ -1,5 +1,6 @@
 import {
-    LOGIN_SUCCESS, LOGIN_START, LOGIN_FAILURE
+    LOGIN_SUCCESS, LOGIN_START, LOGIN_FAILURE,
+    SIGNUP_SUCCESS, SIGNUP_START, SIGNUP_FAILURE,
 } from '../actions';
 
 
@@ -8,7 +9,7 @@ const initialState = {
     error: null
 };
 
-export const loginReducer = (state = initialState, action) => {
+export const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN_START:
             return {

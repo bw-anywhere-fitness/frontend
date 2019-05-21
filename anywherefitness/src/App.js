@@ -26,7 +26,6 @@ function App() {
       <Route exact path="/login" component={Login}  />
       <PrivateRoute exact path="/instructor" component={InstructorHome} />
       <PrivateRoute exact path="/instructor/addclass" component={ClassForm} />  
-      <Route path="/login" component={Login}  />
       <Route path="/clientview" component={ClientView} />
       {/* below line commented out for now */}
       {/* <PrivateRoute exact path="/PLACEHOLDER" component={PLACEHOLDER} />   */}
