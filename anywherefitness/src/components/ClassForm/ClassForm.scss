@@ -29,18 +29,69 @@
             padding: 5px;
             border-radius: 5px;
             border: 1px solid lightgray;
-        }
-
-        .image-form {
-            border: none;
+            font-size: 0.9rem;
         }
 
         button {
             background: #FFEE58;
             border: none;
             height: auto;
-            padding: 10px;
+            padding: 10px 30px;
             border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 6px 6px darken(#FFEE58, 20%);
+            position: relative;
+            cursor: pointer;
+            margin-bottom: 25px;
+
+            &:hover {
+                box-shadow: 4px 4px darken(#FFEE58, 20%);
+                top: 2px;
+              }          
         }
+
+        [type="file"] {
+            height: 0;
+            overflow: hidden;
+            width: 0;
+            z-index: -1;
+            display: none;
+        }
+          
+        label {
+            background: #FFEE58;
+            border: none;
+            border-radius: 5px;
+            color: black;
+            cursor: pointer;
+            display: inline-block;
+            font-family: 'Oxygen', sans-serif;
+            transition: all 0.3s;
+            width: 200px;
+            text-align: start;
+            height: auto;
+            padding: 5px;
+            height: 20px;
+            margin-bottom: 25px; 
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            
+            &:hover {
+              background-color: darken(#FFEE58, 20%);
+            }
+        }
+    } //form
+
+    .error-true {
+        background: red;
+        padding: 5px;
+        color: white;
+        border-radius: 5px;
+    }
+
+    .error-false {
+        display: none;
     }
 }

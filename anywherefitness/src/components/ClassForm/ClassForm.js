@@ -1,10 +1,14 @@
 import React from "react";
 import "./ClassForm.scss";
 
-// import { getData, addFriend, deleteFriend } from "../actions";
+import { addClass } from "../../actions/instructorActions";
 import { connect } from "react-redux";
 // import Friend from "./Friend";
 import { NavLink, Link } from "react-router-dom";
+import Loader from 'react-loader-spinner';
+import SnackbarContent from '@material-ui/core/SnackbarContent';
+import Snackbar from '@material-ui/core/Snackbar';
+import SimpleSnackbar from "../MaterialUI/Snackbar"
 
 import axios from "axios"
 
@@ -13,36 +17,52 @@ class ClassForm extends React.Component {
     super(props);
     this.state = {
       newClass: {
+        name: "",
         image: "",
-        title: "",
-        date: ""
-      }
+        schedule: "",
+        location: ""
+      },
+      snackBarOpen: false
     };
   }
 
-/*  handleChanges = event => {
+  handleChanges = event => {
     event.preventDefault();
     this.setState({
-      friend: {
-        ...this.state.friend,
+      newClass: {
+        ...this.state.newClass,
         [event.target.name]: event.target.value
       }
     });
   };
 
-  componentDidMount() {
-    this.props.getData();
+  add = event => {
+    event.preventDefault();
+    this.props.addClass(this.state.newClass);
+    this.setState({
+      newClass: {
+        name: "",
+        image: "",
+        schedule: "",
+        location: ""
+      },
+      snackBarOpen: true
+    })
+  }
+  
+  toggleSnackbar = event => {
+    event.preventDefault();
   }
 
-  add = event => {
-      event.preventDefault();
-        this.props.addFriend(this.state.friend);
+  /*
+  componentDidMount() {
+    this.props.getData();
   }
 
   delete = (event, id) => {
     event.preventDefault();
       this.props.deleteFriend(id);
-} */
+  } */
 
   render() {
     return (
@@ -63,7 +83,7 @@ class ClassForm extends React.Component {
           <h1>Add your class!</h1>
         </div>
         <form className="form" onSubmit={this.add}>
-          <label for="image">Choose image to upload (PNG, JPG)</label>
+          <label for="image">Choose image to upload</label>
           <input
             placeholder="Image"
             value={this.state.newClass.image}
@@ -71,23 +91,41 @@ class ClassForm extends React.Component {
             name="image"
             type="file"
             className="image-form"
+            id="image"
           />
           <input
-            placeholder="Class title"
-            value={this.state.newClass.title}
+            placeholder="Class name"
+            value={this.state.newClass.name}
             onChange={e => this.handleChanges(e)}
-            name="title"
+            name="name"
           />
           <input
-            placeholder="Date"
-            type="date"
-            value={this.state.newClass.date}
+            placeholder="Schedule"
+            type="text"
+            value={this.state.newClass.schedule}
             onChange={e => this.handleChanges(e)}
-            name="date"
+            name="schedule"
           />
-          <button onClick={this.add}>Add</button>
+          <input
+            placeholder="Location"
+            type="text"
+            value={this.state.newClass.location}
+            onChange={e => this.handleChanges(e)}
+            name="location"
+          />
+          <button className="btn-2" onClick={this.add}>
+            {this.props.addingClass ? (
+              <Loader type="ThreeDots" color="#1f2a38" height="12" width="26" />
+            ) : (
+              "add"
+            )}
+          </button>
         </form>
-
+        {this.state.snackBarOpen ? 
+          <SimpleSnackbar error={this.props.error} open={this.state.snackBarOpen}/> 
+          :
+          <div></div>
+          }
         </div>
       </div>
     );
@@ -97,11 +135,13 @@ class ClassForm extends React.Component {
 const mapStateToProps = state => ({
   classes: state.instructorReducer.classes,
   name: state.instructorReducer.name,
+  error: state.instructorReducer.error,
+  addingClass: state.instructorReducer.addingClass,
 });
 
 export default connect(
   mapStateToProps,
   {
-//    getData, addClass, deleteClass
+    addClass
   }
 )(ClassForm);
