@@ -6,6 +6,9 @@ import { connect } from "react-redux";
 // import Friend from "./Friend";
 import { NavLink, Link } from "react-router-dom";
 import Loader from 'react-loader-spinner';
+import SnackbarContent from '@material-ui/core/SnackbarContent';
+import Snackbar from '@material-ui/core/Snackbar';
+import SimpleSnackbar from "../MaterialUI/Snackbar"
 
 import axios from "axios"
 
@@ -18,7 +21,8 @@ class ClassForm extends React.Component {
         image: "",
         schedule: "",
         location: ""
-      }
+      },
+      snackBarOpen: false
     };
   }
 
@@ -34,8 +38,21 @@ class ClassForm extends React.Component {
 
   add = event => {
     event.preventDefault();
-      this.props.addClass(this.state.newClass);
-  } 
+    this.props.addClass(this.state.newClass);
+    this.setState({
+      newClass: {
+        name: "",
+        image: "",
+        schedule: "",
+        location: ""
+      },
+      snackBarOpen: true
+    })
+  }
+  
+  toggleSnackbar = event => {
+    event.preventDefault();
+  }
 
   /*
   componentDidMount() {
@@ -104,13 +121,11 @@ class ClassForm extends React.Component {
             )}
           </button>
         </form>
-        <div className={`error-${Boolean(this.props.error)}`}>
-            {this.props.error ? (
-              <p>{`Error: ${this.props.error}`}</p>
-            ) : (
-              <p></p>
-            )}
-          </div>
+        {this.state.snackBarOpen ? 
+          <SimpleSnackbar error={this.props.error} open={this.state.snackBarOpen}/> 
+          :
+          <div></div>
+          }
         </div>
       </div>
     );

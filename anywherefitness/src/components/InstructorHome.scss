@@ -64,15 +64,19 @@
     .classes-container {
         background: #E5F2F8;
         padding: 50px 100px;
-        height: 100vh;
+        height: auto;
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
 
         .class-element {
-            height: 335px;
-            width: 300px;
+            height: 250px;
+            width: 20%;
             border: 1px solid black;
             border-radius: 10px;
             background: #E2E6E9;
             box-shadow: 2px 2px 2px gray;
+            margin: 15px;
 
             img {
                 height: auto;

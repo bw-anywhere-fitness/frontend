@@ -7,6 +7,8 @@ import { connect } from "react-redux";
 import { NavLink, Link } from "react-router-dom";
 import ClassComponent from "./ClassComponent"
 
+import { getData } from "../actions/instructorActions"
+
 import axios from "axios"
 
 class InstructorHome extends React.Component {
@@ -21,6 +23,11 @@ class InstructorHome extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const id = localStorage.getItem("id");
+    this.props.getData(id);
+  }
+
 /*  handleChanges = event => {
     event.preventDefault();
     this.setState({
@@ -30,10 +37,6 @@ class InstructorHome extends React.Component {
       }
     });
   };
-
-  componentDidMount() {
-    this.props.getData();
-  }
 
   add = event => {
       event.preventDefault();
@@ -78,6 +81,6 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-//    getData, addClass, deleteClass
+    getData
   }
 )(InstructorHome);

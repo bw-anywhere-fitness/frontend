@@ -1,24 +1,39 @@
 import {
   ADD_CLASS_START,
   ADD_CLASS_SUCCESS,
-  ADD_CLASS_FAILURE
+  ADD_CLASS_FAILURE,
+  FETCH_CLASSES_FAILURE,
+  FETCH_CLASSES_START,
+  FETCH_CLASSES_SUCCESS
 } from "../actions";
 
 const initialState = {
-  classes: [
-      {
-          image: "https://images.pexels.com/photos/1229356/pexels-photo-1229356.jpeg?cs=srgb&dl=abs-adult-athlete-1229356.jpg&fm=jpg",
-          title: "ABC",
-          date: "8:00PM Friday"
-      }
-  ],
+  classes: [],
   addingClass: false,
   error: "",
-  name: "Jonathan"
+  name: "Jonathan",
+  fetchingClasses: false
 };
 
 export const instructorReducer = (state = initialState, action) => {
   switch (action.type) {
+    case FETCH_CLASSES_START:
+      return {
+        ...state,
+        fetchingClasses: true
+      };
+    case FETCH_CLASSES_SUCCESS:
+      return {
+        ...state,
+        fetchingClasses: false,
+        classes: [...state.classes, ...action.payload]
+      };
+    case FETCH_CLASSES_FAILURE:
+      return {
+        ...state,
+        fetchingClasses: false,
+        error: action.payload.message
+      };
     case ADD_CLASS_START:
       return {
         ...state,
@@ -26,10 +41,11 @@ export const instructorReducer = (state = initialState, action) => {
         error: ""
       };
     case ADD_CLASS_SUCCESS:
+      console.log(action.payload)
       return {
         ...state,
         addingClass: false,
-        classes: [...action.payload]
+        classes: [...state.classes, action.payload]
       };
     case ADD_CLASS_FAILURE:
       return {
