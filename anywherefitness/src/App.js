@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import InstructorHome from './components/InstructorHome';
 import Login from './components/Login';
+import Signup from './components/Signup';
+import ClientView from './components/ClientComponents/ClientView';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import PrivateRoute from './PrivateRoute';
@@ -10,20 +12,26 @@ import ClassForm from './components/ClassForm/ClassForm';
 function App() {
   return (
     <Router>
-        <ul>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/PLACEHOLDER">PLACEHOLDER</Link>
-          </li>
-        </ul>
+      {localStorage.getItem("token")
+        ?
+        <nav>
+          <Link to="/clientview">Client</Link>
+          <Link to="/PLACEHOLDER">PLACEHOLDER</Link>
+        </nav>
+        :
+        <nav>
+          <Link to="/login">Login</Link>
+          <Link to="/signup">Signup</Link>
+        </nav>
+      }
 
-      <Route exact path="/login" component={Login}  />
+
+      <Route exact path="/login" component={Login} />
+      <Route exact path="/signup" component={Signup} />
       <PrivateRoute exact path="/instructor" component={InstructorHome} />
-      <PrivateRoute exact path="/instructor/addclass" component={ClassForm} />  
-      {/* below line commented out for now */}
-      {/* <PrivateRoute exact path="/PLACEHOLDER" component={PLACEHOLDER} />   */}
+      <PrivateRoute exact path="/instructor/addclass" component={ClassForm} />
+      <PrivateRoute path="/clientview" component={ClientView} />
+
     </Router>
   );
 }
