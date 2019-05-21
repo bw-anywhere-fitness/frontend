@@ -25,6 +25,7 @@ class Signup extends React.Component {
         e.preventDefault();
         this.props.signup(this.state.newCredentials)
             .then(() => {
+                // this.props.history.push('/clientview');
                 this.props.history.push('/');
             })
     }
@@ -32,6 +33,7 @@ class Signup extends React.Component {
     render() {
         return (
             <form onSubmit={this.signup}>
+                <h1>Signup</h1>
                 <input
                     type="text"
                     name="username"
