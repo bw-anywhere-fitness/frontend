@@ -51,6 +51,9 @@ class InstructorHome extends React.Component {
         <div className="navigation">
           <h2>Hello, {this.props.name}</h2>
           <nav>
+            {/*<Link className="home nav-item" exact to="/instructor/">
+              Home
+            </Link>*/}
             <Link className="classes nav-item" exact to="/instructor/">
               Your classes
             </Link>
