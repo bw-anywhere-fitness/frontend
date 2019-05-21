@@ -38,20 +38,25 @@ class ClassForm extends React.Component {
 
   add = event => {
     event.preventDefault();
-    this.props.addClass(this.state.newClass);
-    this.setState({
-      newClass: {
-        name: "",
-        image: "",
-        schedule: "",
-        location: ""
-      },
-      snackBarOpen: true
-    })
+    this.props.addClass(this.state.newClass)
+    .then(
+      this.setState({
+        newClass: {
+          name: "",
+          image: "",
+          schedule: "",
+          location: ""
+        },
+        snackBarOpen: true
+      })
+    )
   }
   
-  toggleSnackbar = event => {
-    event.preventDefault();
+  toggleSnackbar = () => {
+    this.setState({
+      ...this.state,
+      snackBarOpen: !this.state.snackBarOpen
+    })
   }
 
   /*
@@ -68,7 +73,7 @@ class ClassForm extends React.Component {
     return (
       <div className="instructor-home-container">
         <div className="navigation">
-          <h2>Hello, {this.props.name}</h2>
+          <h2>Hello!</h2>
           <nav>
             <Link className="classes nav-item" exact to="/instructor/">
               Your classes
@@ -122,7 +127,7 @@ class ClassForm extends React.Component {
           </button>
         </form>
         {this.state.snackBarOpen ? 
-          <SimpleSnackbar error={this.props.error} open={this.state.snackBarOpen}/> 
+          <SimpleSnackbar toggleSnackbar={this.toggleSnackbar} error={this.props.error} open={this.state.snackBarOpen}/> 
           :
           <div></div>
           }

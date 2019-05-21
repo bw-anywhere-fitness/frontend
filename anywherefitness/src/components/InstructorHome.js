@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { NavLink, Link } from "react-router-dom";
 import ClassComponent from "./ClassComponent"
 
-import { getData } from "../actions/instructorActions"
+import { getData, deleteClass } from "../actions/instructorActions"
 
 import axios from "axios"
 
@@ -28,6 +28,11 @@ class InstructorHome extends React.Component {
     this.props.getData(id);
   }
 
+  delete = (event, id) => {
+    event.preventDefault();
+    this.props.deleteClass(id);
+  }
+
 /*  handleChanges = event => {
     event.preventDefault();
     this.setState({
@@ -42,17 +47,13 @@ class InstructorHome extends React.Component {
       event.preventDefault();
         this.props.addFriend(this.state.friend);
   }
-
-  delete = (event, id) => {
-    event.preventDefault();
-      this.props.deleteFriend(id);
-} */
+ */
 
   render() {
     return (
       <div className="instructor-home-container">
         <div className="navigation">
-          <h2>Hello, {this.props.name}</h2>
+          <h2>Hello!</h2>
           <nav>
             {/*<Link className="home nav-item" exact to="/instructor/">
               Home
@@ -66,7 +67,7 @@ class InstructorHome extends React.Component {
           </nav>
         </div>
         <div className="classes-container">
-          {this.props.classes.map(classElement => <ClassComponent classProp={classElement}/>)}
+          {this.props.classes.map(classElement => <ClassComponent delete={this.delete} classProp={classElement}/>)}
         </div>
       </div>
     );
@@ -81,6 +82,6 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    getData
+    getData, deleteClass
   }
 )(InstructorHome);

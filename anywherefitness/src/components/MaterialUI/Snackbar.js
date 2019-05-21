@@ -5,8 +5,16 @@ import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import green from '@material-ui/core/colors/green';
+import amber from '@material-ui/core/colors/amber';
 
 const styles = theme => ({
+  success: {
+    backgroundColor: green[600],
+  },
+  error: {
+    backgroundColor: theme.palette.error.dark,
+  },
   close: {
     padding: theme.spacing.unit / 2,
   },
@@ -27,6 +35,7 @@ class SimpleSnackbar extends React.Component {
     }
 
     this.setState({ open: false });
+    this.props.toggleSnackbar();  
   };
 
   render() {

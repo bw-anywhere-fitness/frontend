@@ -2,6 +2,8 @@ import React from "react";
 import "./InstructorHome.scss";
 
 function ClassComponent(props) {
+  console.log(props);
+  console.log(props.classProp)
   return (
     <div className="class-element">
       <img src={props.classProp.image} />
@@ -10,7 +12,7 @@ function ClassComponent(props) {
         <p className="class-date">{props.classProp.schedule}</p>
       </div>
       <div className="class-element-buttons">
-        <button>DELETE</button>
+        <button onClick={(e) => props.delete(e, props.classProp.id)}>DELETE</button>
         <button>EDIT</button>
       </div>
     </div>
