@@ -80,11 +80,12 @@ class ClassForm extends React.Component {
 
     const file = await res.json();
     this.setState({
-      image: file.secure_url
+      newClass: { image: file.secure_url }
     });
   };
 
   render() {
+    console.log(this.state);
     return (
       <div className="instructor-home-container">
         <div className="navigation">
