@@ -1,5 +1,5 @@
 import React from 'react';
-import BrowseClassList from './BrowseClassList';
+import AvailableClassList from './AvailableClassList';
 import ClientClassList from './ClientClassList';
 import ClassPass from './ClassPass';
 
@@ -10,8 +10,8 @@ function ClientView() {
         <Router>
             <p>Client View</p>
             <p>Test</p>
-            <Link exact to="/client/browse-classes">
-              Browse Classes
+            <Link exact to="/client/available-classes">
+              Available Classes
             </Link>
             <Link exact to="/client/client-classes">
               My Classes
@@ -20,7 +20,7 @@ function ClientView() {
               Passes
             </Link>
             
-            <Route path="/client/browse-classes" component={BrowseClassList} />
+            <Route path="/client/available-classes" component={AvailableClassList} />
             <Route path="/client/client-classes" component={ClientClassList} />
             <Route path="/client/passes" component={ClassPass} />
 

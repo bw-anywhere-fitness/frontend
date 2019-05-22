@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { getClientClasses } from '../../actions';
-import Class from './Class';
+import ClientClass from './ClientClass';
 
 class ClientClassList extends React.Component {
     componentDidMount() {
-        this.props.getClientClasses();
+        this.props.getClientClasses(localStorage.getItem("id"));
     }
 
     render() {
@@ -14,11 +14,11 @@ class ClientClassList extends React.Component {
         console.log("client class list", this.props.clientClassList)
         return (
             <div>
-                <p>Client classes component:</p>
+                <p>Client classes list:</p>
                 {this.props.clientClassList.map(singleClass => {
-                    return <Class 
+                    return <ClientClass 
                         key={singleClass.id}
-                        id={singleClass.id}
+                        classId={singleClass.id}
                         name={singleClass.name}
                         schedule={singleClass.schedule}
                         location={singleClass.location}
