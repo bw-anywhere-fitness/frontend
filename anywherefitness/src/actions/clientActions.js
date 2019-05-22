@@ -9,7 +9,7 @@ export const getAllClasses = creds => dispatch => {
     dispatch({ type: GET_ALL_CLASSES_START });
     axiosWithAuth().get('https://anywhere-fitness.herokuapp.com/classes', creds)
         .then(res => {
-            console.log("get classes in clientActions.js", res);
+            // console.log("get classes in clientActions.js", res);
             dispatch({ type: GET_ALL_CLASSES_SUCCESS, payload: res.data })
         })
         .catch(err => {
@@ -17,6 +17,24 @@ export const getAllClasses = creds => dispatch => {
             dispatch({ type: GET_ALL_CLASSES_FAILURE })
         })
 }
+
+export const GET_CLIENT_CLASSES_START = "GET_CLIENT_CLASSES_START";
+export const GET_CLIENT_CLASSES_SUCCESS = "GET_CLIENT_CLASSES_SUCCESS";
+export const GET_CLIENT_CLASSES_FAILURE = "GET_CLIENT_CLASSES_FAILURE";
+
+export const getClientClasses = (creds, id) => dispatch => {
+    dispatch({ type: GET_ALL_CLASSES_START });
+    axiosWithAuth().get(`https://anywhere-fitness.herokuapp.com/classes/client/${id}`, creds)
+        .then(res => {
+            console.log("get client classes in clientActions.js", res);
+            dispatch({ type: GET_CLIENT_CLASSES_SUCCESS, payload: res.data })
+        })
+        .catch(err => {
+            console.log(err);
+            dispatch({ type: GET_CLIENT_CLASSES_FAILURE })
+        })
+}
+
 
 
 export const GET_PASSES_START = "GET_PASSES_START";

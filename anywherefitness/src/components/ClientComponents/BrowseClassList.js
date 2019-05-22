@@ -10,8 +10,8 @@ class BrowseClassList extends React.Component {
     }
 
     render() {
-        console.log("browse class list props", this.props);
-        console.log(this.props.classList)
+        // console.log("browse class list props", this.props);
+        // console.log(this.props.classList)
         return (
             <div>
                 <p>All classes:</p>
