@@ -28,9 +28,10 @@ class InstructorHome extends React.Component {
     this.props.getData(id);
   }
 
-  delete = (event, id) => {
+  delete = (event, id, instructorId) => {
+    const instId = localStorage.getItem("id");
     event.preventDefault();
-    this.props.deleteClass(id);
+    this.props.deleteClass(id, instId);
   }
 
 /*  handleChanges = event => {

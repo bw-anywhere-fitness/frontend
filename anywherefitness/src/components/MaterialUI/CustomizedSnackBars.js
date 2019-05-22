@@ -95,7 +95,7 @@ const styles2 = theme => ({
 
 class CustomizedSnackbars extends React.Component {
   state = {
-    open: false,
+    open: this.props.open,
   };
 
   handleClick = () => {
@@ -108,6 +108,7 @@ class CustomizedSnackbars extends React.Component {
     }
 
     this.setState({ open: false });
+    this.props.toggleSnackbar();
   };
 
   render() {
@@ -115,9 +116,23 @@ class CustomizedSnackbars extends React.Component {
 
     return (
       <div>
-        <Button className={classes.margin} onClick={this.handleClick}>
-          Open success snackbar
-        </Button>
+        {this.props.error ? 
+        <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        open={this.state.open}
+        autoHideDuration={6000}
+        onClose={this.handleClose}
+      >
+        <MySnackbarContentWrapper
+          onClose={this.handleClose}
+          variant="error"
+          message={`Error: ${this.props.error}!`}
+        />
+        </Snackbar>        
+        : 
         <Snackbar
           anchorOrigin={{
             vertical: 'bottom',
@@ -130,29 +145,10 @@ class CustomizedSnackbars extends React.Component {
           <MySnackbarContentWrapper
             onClose={this.handleClose}
             variant="success"
-            message="This is a success message!"
+            message="Class added successfully!"
           />
         </Snackbar>
-        <MySnackbarContentWrapper
-          variant="error"
-          className={classes.margin}
-          message="This is an error message!"
-        />
-        <MySnackbarContentWrapper
-          variant="warning"
-          className={classes.margin}
-          message="This is a warning message!"
-        />
-        <MySnackbarContentWrapper
-          variant="info"
-          className={classes.margin}
-          message="This is an information message!"
-        />
-        <MySnackbarContentWrapper
-          variant="success"
-          className={classes.margin}
-          message="This is a success message!"
-        />
+        }
       </div>
     );
   }

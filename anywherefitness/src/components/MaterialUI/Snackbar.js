@@ -9,11 +9,8 @@ import green from '@material-ui/core/colors/green';
 import amber from '@material-ui/core/colors/amber';
 
 const styles = theme => ({
-  success: {
+  root: {
     backgroundColor: green[600],
-  },
-  error: {
-    backgroundColor: theme.palette.error.dark,
   },
   close: {
     padding: theme.spacing.unit / 2,
@@ -43,7 +40,7 @@ class SimpleSnackbar extends React.Component {
     return (
       <div>
         <Snackbar
-            className="snackbar"
+          classes={{root: classes.root}}
           anchorOrigin={{
             vertical: 'bottom',
             horizontal: 'left',
@@ -55,7 +52,7 @@ class SimpleSnackbar extends React.Component {
             'aria-describedby': 'message-id',
           }}
           message={
-            <span id="message-id">
+            <span className={classes.root}>
                 {this.props.error ? `Error: ${this.props.error}` : "Success"}
             </span>}
           action={[

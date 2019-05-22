@@ -97,13 +97,19 @@
             .class-element-buttons {
                 padding-left: 10px;
                 
+                
                 button {
+                    cursor: pointer;
                     background: #FF0000;
                     color: white;
                     border: none;
                     border-radius: 5px;
                     margin-right: 20px;
                     padding: 5px;
+
+                    &:hover {
+                        background: darken(#FF0000, 10%);
+                    }
                 }
             }
         }

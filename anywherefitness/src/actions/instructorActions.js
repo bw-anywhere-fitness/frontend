@@ -40,12 +40,12 @@ export const addClass = newClass => dispatch => {
 export const DEL_CLASS_START = 'DEL_CLASS_START';
 export const DEL_CLASS_SUCCESS = 'DEL_CLASS_SUCCESS';
 export const DEL_CLASS_FAILURE = 'DEL_CLASS_FAILURE';
-export const deleteClass = id => dispatch => {
+export const deleteClass = (classId, instructorId) => dispatch => {
   dispatch({ type: DEL_CLASS_START });
   axiosWithAuth()
-  .delete(`https://anywhere-fitness.herokuapp.com/classes/${id}`)
-    .then(res1 => {
-      axiosWithAuth().get(`https://anywhere-fitness.herokuapp.com/classes/instructor/${id}`)
+  .delete(`https://anywhere-fitness.herokuapp.com/classes/${classId}`)
+    .then(res => {
+      axiosWithAuth().get(`https://anywhere-fitness.herokuapp.com/classes/instructor/${instructorId}`)
       .then(res => {
         console.log(res);
         dispatch({ type: DEL_CLASS_SUCCESS, payload: res.data });

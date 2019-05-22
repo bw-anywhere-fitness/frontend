@@ -29,7 +29,7 @@ export const instructorReducer = (state = initialState, action) => {
       return {
         ...state,
         fetchingClasses: false,
-        classes: [...state.classes, ...action.payload]
+        classes: [...action.payload]
       };
     case FETCH_CLASSES_FAILURE:
       return {
@@ -61,6 +61,7 @@ export const instructorReducer = (state = initialState, action) => {
         deletingClass: true
       };
     case DEL_CLASS_SUCCESS:
+      console.log(action.payload)
       return {
         ...state,
         deletingClass: false,
