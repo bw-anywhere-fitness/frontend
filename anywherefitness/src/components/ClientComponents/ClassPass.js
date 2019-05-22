@@ -1,19 +1,22 @@
-import React from 'react';
-import { connect } from 'react-redux';
+// THIS WILL LIKELY NOT BE USED
+//  every time you sign up for a class, you are given 10x passes
 
-class ClassPass extends React.Component {
+// import React from 'react';
+// import { connect } from 'react-redux';
 
-    render() {
-        return (
-            <div>
-                <p>Available class punches left (placeholder)</p>
-                <button>Buy another pass for 10 classes </button>
-            </div>
-        )
-    }
-}
+// class ClassPass extends React.Component {
 
-export default ClassPass
+//     render() {
+//         return (
+//             <div>
+//                 <p>Available class punches left (placeholder)</p>
+//                 <button>Buy another pass for 10 classes </button>
+//             </div>
+//         )
+//     }
+// }
+
+// export default ClassPass
 
 // export default connect(
 //     null ,

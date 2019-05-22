@@ -18,11 +18,12 @@ class ClientClassList extends React.Component {
                 {this.props.clientClassList.map(singleClass => {
                     return <ClientClass 
                         key={singleClass.id}
-                        classId={singleClass.id}
+                        id={singleClass.id}
                         name={singleClass.name}
                         schedule={singleClass.schedule}
                         location={singleClass.location}
                         image={singleClass.image}
+                        uses_remaining={singleClass.uses_remaining}
                     />  
                      })}
                         

@@ -1,6 +1,7 @@
 import { GET_ALL_CLASSES_FAILURE, GET_ALL_CLASSES_START, GET_ALL_CLASSES_SUCCESS,
     GET_CLIENT_CLASSES_FAILURE, GET_CLIENT_CLASSES_START, GET_CLIENT_CLASSES_SUCCESS,
     ENROLL_IN_CLASS_FAILURE, ENROLL_IN_CLASS_START, ENROLL_IN_CLASS_SUCCESS,
+    DELETE_CLASS_FAILURE, DELETE_CLASS_START, DELETE_CLASS_SUCCESS,
      } from '../actions';
 
 
@@ -9,6 +10,7 @@ const initialState = {
     classList: [ ],
     fetchingClientClasses: false,
     enrollingInClass: false,
+    deletingClass: false,
     clientClassList: [ ],
     clientReducerError: '',
 }
@@ -51,6 +53,17 @@ export const clientReducer = (state = initialState, action) => {
             ...state,
             enrollingInClass: false,
             clientClassList: action.payload
+        }
+        case DELETE_CLASS_START:
+        return {
+            ...state,
+            deletingClass: true,
+            clientReducerError: '',
+        }
+        case DELETE_CLASS_SUCCESS:
+        return {
+            ...state,
+            deletingClass: false
         }
         default:
             return state;

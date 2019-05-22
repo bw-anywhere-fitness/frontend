@@ -16,13 +16,13 @@ function ClientView() {
             <Link exact to="/client/client-classes">
               My Classes
             </Link>
-            <Link exact to="/client/passes">
+            {/* <Link exact to="/client/passes">
               Passes
-            </Link>
+            </Link> */}
             
             <Route path="/client/available-classes" component={AvailableClassList} />
             <Route path="/client/client-classes" component={ClientClassList} />
-            <Route path="/client/passes" component={ClassPass} />
+            {/* <Route path="/client/passes" component={ClassPass} /> */}
 
         </Router>
     )
