@@ -71,7 +71,7 @@
         flex-wrap: wrap;
 
         .class-element {
-            height: 250px;
+            height: 275px;
             width: 20%;
             border: 1px solid black;
             border-radius: 10px;
@@ -89,6 +89,11 @@
             .class-element-content {
                 padding: 10px;
 
+                .class-title {
+                    margin-bottom: 7.5px;
+                    font-weight: bold;
+                }
+
                 .class-date {
                     color: #5B5D5E;
                 }
@@ -97,15 +102,14 @@
             .class-element-buttons {
                 padding-left: 10px;
                 
-                
                 button {
                     cursor: pointer;
                     background: #FF0000;
                     color: white;
                     border: none;
                     border-radius: 5px;
-                    margin-right: 20px;
                     padding: 5px;
+                    width: 75px;
 
                     &:hover {
                         background: darken(#FF0000, 10%);

@@ -4,11 +4,8 @@ import "./ClassForm.scss";
 import { addClass } from "../../actions/instructorActions";
 import { connect } from "react-redux";
 // import Friend from "./Friend";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Loader from "react-loader-spinner";
-import SnackbarContent from "@material-ui/core/SnackbarContent";
-import Snackbar from "@material-ui/core/Snackbar";
-import SimpleSnackbar from "../MaterialUI/Snackbar";
 import CustomizedSnackbar from "../MaterialUI/CustomizedSnackBars"
 
 import axios from "axios";
@@ -140,7 +137,7 @@ class ClassForm extends React.Component {
                 <Loader
                   type="ThreeDots"
                   color="#1f2a38"
-                  height="12"
+                  height="7.5"
                   width="26"
                 />
               ) : (

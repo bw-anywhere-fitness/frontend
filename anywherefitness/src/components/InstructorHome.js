@@ -68,7 +68,13 @@ class InstructorHome extends React.Component {
           </nav>
         </div>
         <div className="classes-container">
-          {this.props.classes.map(classElement => <ClassComponent delete={this.delete} classProp={classElement}/>)}
+          {this.props.classes.map(classElement => 
+            <ClassComponent 
+              delete={this.delete} 
+              classProp={classElement}
+              deletingClass={this.props.deletingClass}
+            />
+          )}
         </div>
       </div>
     );
@@ -77,7 +83,7 @@ class InstructorHome extends React.Component {
 
 const mapStateToProps = state => ({
   classes: state.instructorReducer.classes,
-  name: state.instructorReducer.name,
+  deletingClass: state.instructorReducer.deletingClass
 });
 
 export default connect(
