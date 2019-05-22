@@ -4,11 +4,9 @@ import "./ClassForm.scss";
 import { addClass } from "../../actions/instructorActions";
 import { connect } from "react-redux";
 // import Friend from "./Friend";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Loader from "react-loader-spinner";
-import SnackbarContent from "@material-ui/core/SnackbarContent";
-import Snackbar from "@material-ui/core/Snackbar";
-import SimpleSnackbar from "../MaterialUI/Snackbar";
+import CustomizedSnackbar from "../MaterialUI/CustomizedSnackBars"
 
 import axios from "axios";
 
@@ -22,7 +20,7 @@ class ClassForm extends React.Component {
         schedule: "",
         location: ""
       },
-      snackBarOpen: false
+      snackBarOpen: false,
     };
   }
 
@@ -38,31 +36,27 @@ class ClassForm extends React.Component {
 
   add = event => {
     event.preventDefault();
-    this.props.addClass(this.state.newClass);
-    this.setState({
-      newClass: {
-        name: "",
-        image: "",
-        schedule: "",
-        location: ""
-      },
-      snackBarOpen: true
-    });
-  };
-
-  toggleSnackbar = event => {
-    event.preventDefault();
-  };
-
-  /*
-  componentDidMount() {
-    this.props.getData();
+    this.props.addClass(this.state.newClass)
+    .then( () => {
+      this.setState({
+        newClass: {
+          name: "",
+          image: "",
+          schedule: "",
+          location: ""
+        },
+        snackBarOpen: true,
+      })
+    }
+    )
   }
-
-  delete = (event, id) => {
-    event.preventDefault();
-      this.props.deleteFriend(id);
-  } */
+  
+  toggleSnackbar = () => {
+    this.setState({
+      ...this.state,
+      snackBarOpen: !this.state.snackBarOpen
+    })
+  }
 
   uploadfile = async e => {
     const files = e.target.files;
@@ -90,7 +84,7 @@ class ClassForm extends React.Component {
     return (
       <div className="instructor-home-container">
         <div className="navigation">
-          <h2>Hello, {this.props.name}</h2>
+          <h2>Hello!</h2>
           <nav>
             <Link className="classes nav-item" exact to="/instructor/">
               Your classes
@@ -144,7 +138,7 @@ class ClassForm extends React.Component {
                 <Loader
                   type="ThreeDots"
                   color="#1f2a38"
-                  height="12"
+                  height="7.5"
                   width="26"
                 />
               ) : (
@@ -153,9 +147,10 @@ class ClassForm extends React.Component {
             </button>
           </form>
           {this.state.snackBarOpen ? (
-            <SimpleSnackbar
+            <CustomizedSnackbar
               error={this.props.error}
               open={this.state.snackBarOpen}
+              toggleSnackbar={this.toggleSnackbar}
             />
           ) : (
             <div />

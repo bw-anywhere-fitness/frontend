@@ -5,8 +5,13 @@ import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import green from '@material-ui/core/colors/green';
+import amber from '@material-ui/core/colors/amber';
 
 const styles = theme => ({
+  root: {
+    backgroundColor: green[600],
+  },
   close: {
     padding: theme.spacing.unit / 2,
   },
@@ -27,6 +32,7 @@ class SimpleSnackbar extends React.Component {
     }
 
     this.setState({ open: false });
+    this.props.toggleSnackbar();  
   };
 
   render() {
@@ -34,7 +40,7 @@ class SimpleSnackbar extends React.Component {
     return (
       <div>
         <Snackbar
-            className="snackbar"
+          classes={{root: classes.root}}
           anchorOrigin={{
             vertical: 'bottom',
             horizontal: 'left',
@@ -46,7 +52,7 @@ class SimpleSnackbar extends React.Component {
             'aria-describedby': 'message-id',
           }}
           message={
-            <span id="message-id">
+            <span className={classes.root}>
                 {this.props.error ? `Error: ${this.props.error}` : "Success"}
             </span>}
           action={[
