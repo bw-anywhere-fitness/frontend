@@ -4,17 +4,17 @@ import { connect } from 'react-redux';
 import { getClientClasses } from '../../actions';
 import Class from './Class';
 
-class MyClassList extends React.Component {
+class ClientClassList extends React.Component {
     componentDidMount() {
         this.props.getClientClasses();
     }
 
     render() {
-        // console.log("my classes list props", this.props);
+        // console.log("client classes list props", this.props);
         console.log("client class list", this.props.clientClassList)
         return (
             <div>
-                <p>Client classes:</p>
+                <p>Client classes component:</p>
                 {this.props.clientClassList.map(singleClass => {
                     return <Class 
                         key={singleClass.id}
@@ -39,6 +39,6 @@ const mapStateToProps = state => ({
 export default connect(
     mapStateToProps,
     { getClientClasses }
-)(MyClassList)
+)(ClientClassList)
 
 

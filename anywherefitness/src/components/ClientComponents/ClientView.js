@@ -1,6 +1,6 @@
 import React from 'react';
 import BrowseClassList from './BrowseClassList';
-import MyClassList from './MyClassList';
+import ClientClassList from './ClientClassList';
 import ClassPass from './ClassPass';
 
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
@@ -13,7 +13,7 @@ function ClientView() {
             <Link exact to="/client/browse-classes">
               Browse Classes
             </Link>
-            <Link exact to="/client/my-classes">
+            <Link exact to="/client/client-classes">
               My Classes
             </Link>
             <Link exact to="/client/passes">
@@ -21,7 +21,7 @@ function ClientView() {
             </Link>
             
             <Route path="/client/browse-classes" component={BrowseClassList} />
-            <Route path="/client/my-classes" component={MyClassList} />
+            <Route path="/client/client-classes" component={ClientClassList} />
             <Route path="/client/passes" component={ClassPass} />
 
         </Router>
