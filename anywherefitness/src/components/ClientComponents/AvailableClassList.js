@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { getAllClasses } from '../../actions';
-import Class from './Class';
+import AvailableClass from './AvailableClass';
 
-class BrowseClassList extends React.Component {
+class AvailableClassList extends React.Component {
     componentDidMount() {
         this.props.getAllClasses();
     }
@@ -16,7 +16,7 @@ class BrowseClassList extends React.Component {
             <div>
                 <p>All classes:</p>
                 {this.props.classList.map(singleClass => {
-                    return <Class 
+                    return <AvailableClass 
                         key={singleClass.id}
                         id={singleClass.id}
                         name={singleClass.name}
@@ -38,6 +38,6 @@ const mapStateToProps = state => ({
 export default connect(
     mapStateToProps,
     { getAllClasses }
-)(BrowseClassList)
+)(AvailableClassList)
 
 

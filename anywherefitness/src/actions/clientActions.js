@@ -5,9 +5,9 @@ export const GET_ALL_CLASSES_START = "GET_ALL_CLASSES_START";
 export const GET_ALL_CLASSES_SUCCESS = "GET_ALL_CLASSES_SUCCESS";
 export const GET_ALL_CLASSES_FAILURE = "GET_ALL_CLASSES_FAILURE";
 
-export const getAllClasses = creds => dispatch => {
+export const getAllClasses = () => dispatch => {
     dispatch({ type: GET_ALL_CLASSES_START });
-    axiosWithAuth().get('https://anywhere-fitness.herokuapp.com/classes', creds)
+    axiosWithAuth().get('https://anywhere-fitness.herokuapp.com/classes')
         .then(res => {
             // console.log("get classes in clientActions.js", res);
             dispatch({ type: GET_ALL_CLASSES_SUCCESS, payload: res.data })
@@ -22,9 +22,10 @@ export const GET_CLIENT_CLASSES_START = "GET_CLIENT_CLASSES_START";
 export const GET_CLIENT_CLASSES_SUCCESS = "GET_CLIENT_CLASSES_SUCCESS";
 export const GET_CLIENT_CLASSES_FAILURE = "GET_CLIENT_CLASSES_FAILURE";
 
-export const getClientClasses = (creds, id) => dispatch => {
+export const getClientClasses = user_id => dispatch => {
     dispatch({ type: GET_ALL_CLASSES_START });
-    axiosWithAuth().get(`https://anywhere-fitness.herokuapp.com/classes/client/${id}`, creds)
+    console.log("getting Client classes, user_id is", user_id);
+    axiosWithAuth().get(`https://anywhere-fitness.herokuapp.com/classes/client/${user_id}`)
         .then(res => {
             console.log("get client classes in clientActions.js", res);
             dispatch({ type: GET_CLIENT_CLASSES_SUCCESS, payload: res.data })
@@ -35,59 +36,39 @@ export const getClientClasses = (creds, id) => dispatch => {
         })
 }
 
+export const ENROLL_IN_CLASS_START = "ENROLL_IN_CLASS_START";
+export const ENROLL_IN_CLASS_SUCCESS = "ENROLL_IN_CLASS_SUCCESS";
+export const ENROLL_IN_CLASS_FAILURE = "ENROLL_IN_CLASS_FAILURE";
 
-
-export const GET_PASSES_START = "GET_PASSES_START";
-export const GET_PASSES_SUCCESS = "GET_PASSES_SUCCESS";
-export const GET_PASSES_FAILURE = "GET_PASSES_FAILURE";
-
-export const getPasses = creds => dispatch => {
-    // console.log("creds", creds)
-    dispatch({ type: GET_PASSES_START })
-    // axiosWithAuth().get('api placeholder')
-    //     .then(res => {
-    //         // console.log("response", res);
-    //         dispatch({ type: GET_PASSES_SUCCESS, payload: res.data})
-    //     })
-    //     .catch(err => {
-    //         // console.log(err);
-    //         dispatch({ type: GET_PASSES_FAILURE })
-    //     })
+export const enrollInClass = ( class_id, user_id) => dispatch => {
+    dispatch({ type: ENROLL_IN_CLASS_START });
+    console.log("class ID", class_id);
+    axiosWithAuth().post(`https://anywhere-fitness.herokuapp.com/classes/add/${class_id}`, {user_id:user_id} )
+        .then(res => {
+            console.log("enrolling in class response", res);
+            dispatch({ type: ENROLL_IN_CLASS_SUCCESS, payload: res.data })
+        })
+        .catch(err => {
+            console.log(err);
+            dispatch({ type: ENROLL_IN_CLASS_FAILURE })
+        })
 }
 
-// export const PURCHASE_PASSES_START = "PURCHASE_PASSES_START";
-// export const PURCHASE_PASSES_SUCCESS = "PURCHASE_PASSES_SUCCESS";
-// export const PURCHASE_PASSES_FAILURE = "PURCHASE_PASSES_FAILURE";
+export const DELETE_CLASS_START = "DELETE_CLASS_START";
+export const DELETE_CLASS_SUCCESS = "DELETE_CLASS_SUCCESS";
+export const DELETE_CLASS_FAILURE = "DELETE_CLASS_FAILURE`";
 
-// export const purchasePasses = clientID => dispatch => {
-//     dispatch({ type: PURCHASE_PASSES_START })
-//     axiosWithAuth().put(`api placeholder`, clientID)
-//         .then(res => {
-//             dispatch({ type: PURCHASE_PASSES_SUCCESS, payload: res.data})
-//         })
-//         .catch(err => {
-//             dispatch({ type: PURCHASE_PASSES_FAILURE })
-//         })
-// }
-
-export const USE_ONE_PASS_START = "USE_ONE_PASS_START";
-export const USE_ONE_PASS_SUCCESS = "USE_ONE_PASS_SUCCESS";
-export const USE_ONE_PASS_FAILURE = "USE_ONE_PASS_FAILURE";
-
-// export const useOnePass = clientID => dispatch => {
-//     dispatch({ type: USE_ONE_PASS_START })
-//     axiosWithAuth().put(`api placeholder`, clientID)
-//         .then(res => {
-//             dispatch({ type: USE_ONE_PASS_SUCCESS, payload: res.data})
-//         })
-//         .catch(err => {
-//             dispatch({ type: USE_ONE_PASS_FAILURE })
-//         })
-// }
-
-
-
-
-
-
+export const deleteClass = (class_id, user_id) => dispatch => {
+    dispatch({ type: DELETE_CLASS_START });
+    // console.log("class ID", class_id);
+    axiosWithAuth().delete(`https://anywhere-fitness.herokuapp.com/classes/remove/${class_id}`, {id:user_id} )
+        .then(res => {
+            console.log("deleting class response", res);
+            dispatch({ type: DELETE_CLASS_SUCCESS, payload: res.data })
+        })
+        .catch(err => {
+            console.log(err);
+            dispatch({ type: DELETE_CLASS_FAILURE })
+        })
+}
 
