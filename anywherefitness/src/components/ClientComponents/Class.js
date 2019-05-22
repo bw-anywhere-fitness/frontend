@@ -7,7 +7,9 @@ class Class extends React.Component {
     render() {
         return (
             <div>
-                ClassName
+                <p>{this.props.name}</p>
+                <p>{this.props.schedule}</p>
+                <p>{this.props.location}</p>
                 <button>Enroll</button>
             </div>
         )
