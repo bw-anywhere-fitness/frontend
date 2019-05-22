@@ -80,7 +80,8 @@ class ClassForm extends React.Component {
 
     const file = await res.json();
     this.setState({
-      newClass: { image: file.secure_url }
+      ...this.state,
+      newClass: { ...this.state.newClass, image: file.secure_url }
     });
   };
 
@@ -111,7 +112,6 @@ class ClassForm extends React.Component {
             <label for="image">Choose image to upload</label>
             <input
               placeholder="Image"
-              value={this.state.newClass.image}
               onChange={e => this.uploadfile(e)}
               name="image"
               type="file"
