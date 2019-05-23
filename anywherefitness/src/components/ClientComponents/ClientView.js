@@ -1,31 +1,33 @@
 import React from 'react';
 import AvailableClassList from './AvailableClassList';
 import ClientClassList from './ClientClassList';
-import ClassPass from './ClassPass';
+import "./ClientView.scss";
 
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 function ClientView() {
-    return (
-        <Router>
-            <p>Client View</p>
-            <p>Test</p>
-            <Link exact to="/client/available-classes">
+  return (
+    <Router>
+      <div className="client-home-container">
+        <div className="navigation">
+          <h2>Hello!</h2>
+          <nav>
+            <Link className="classes nav-item" exact to="/client/available-classes">
               Available Classes
             </Link>
-            <Link exact to="/client/client-classes">
+            <Link className="add-class nav-item" exact to="/client/client-classes">
               My Classes
             </Link>
-            {/* <Link exact to="/client/passes">
-              Passes
-            </Link> */}
-            
-            <Route path="/client/available-classes" component={AvailableClassList} />
-            <Route path="/client/client-classes" component={ClientClassList} />
-            {/* <Route path="/client/passes" component={ClassPass} /> */}
+          </nav>
+        </div>
+        <Route path="/client/available-classes" component={AvailableClassList} />
+        <Route path="/client/client-classes" component={ClientClassList} />
 
-        </Router>
-    )
+
+
+      </div>
+    </Router>
+  )
 }
 
 export default ClientView
