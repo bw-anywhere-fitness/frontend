@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { getAllClasses } from '../../actions';
 import AvailableClass from './AvailableClass';
+import "./ClientView.scss";
 
 class AvailableClassList extends React.Component {
     componentDidMount() {
@@ -13,8 +14,7 @@ class AvailableClassList extends React.Component {
         // console.log("browse class list props", this.props);
         // console.log(this.props.classList)
         return (
-            <div>
-                <p>All classes:</p>
+            <div className="classes-container">
                 {this.props.classList.map(singleClass => {
                     return <AvailableClass 
                         key={singleClass.id}

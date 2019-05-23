@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { getClientClasses } from '../../actions';
 import ClientClass from './ClientClass';
+import "./ClientView.scss";
 
 class ClientClassList extends React.Component {
     componentDidMount() {
@@ -13,8 +14,8 @@ class ClientClassList extends React.Component {
         // console.log("client classes list props", this.props);
         console.log("client class list", this.props.clientClassList)
         return (
-            <div>
-                <p>Client classes list:</p>
+            <div className="classes-container">
+      
                 {this.props.clientClassList.map(singleClass => {
                     return <ClientClass 
                         key={singleClass.id}
