@@ -11,6 +11,7 @@ export const signup = creds => dispatch => {
             console.log(res);
             localStorage.setItem('token', res.data.token)
             localStorage.setItem('id', res.data.id)
+            localStorage.setItem('instructor', res.data.instructor)
             dispatch({ type: SIGNUP_SUCCESS, payload: res.data.token })
         })
         .catch(err => {
@@ -29,6 +30,7 @@ export const login = creds => dispatch => {
             console.log(res);
             localStorage.setItem('token', res.data.token)
             localStorage.setItem('id', res.data.id)
+            localStorage.setItem('instructor', res.data.instructor)
             dispatch({ type: LOGIN_SUCCESS, payload: res.data.token })
         })
         .catch(err => {
