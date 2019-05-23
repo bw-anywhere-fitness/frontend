@@ -63,7 +63,7 @@ export const deleteClientClass = (class_id, user_id) => dispatch => {
     // console.log("class ID", class_id);
     console.log("classID for delete API call", class_id);
     console.log("userID for API call", user_id);
-    axiosWithAuth().delete(`https://anywhere-fitness.herokuapp.com/classes/remove/${class_id}/client`, {user_id:user_id} )
+    axiosWithAuth().delete(`https://anywhere-fitness.herokuapp.com/classes/remove/${class_id}/instructor`, {user_id:user_id} )
     // axiosWithAuth().delete(`https://anywhere-fitness.herokuapp.com/classes/remove/${class_id}`, {id:user_id} )
         .then(res => {
             console.log("deleting class response", res);
