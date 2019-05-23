@@ -26,8 +26,11 @@ class Login extends React.Component {
         e.preventDefault();
         this.props.login(this.state.credentials)
             .then(() => {
-                this.props.history.push('/');
-                // this.props.history.push('/clientview');
+                if (localStorage.getItem("instructor") === "true") {
+                    this.props.history.push('/instructor');
+                } else {
+                    this.props.history.push('/clientview');
+                }
             })
     }
 

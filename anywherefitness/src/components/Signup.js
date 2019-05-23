@@ -25,8 +25,11 @@ class Signup extends React.Component {
         e.preventDefault();
         this.props.signup(this.state.newCredentials)
             .then(() => {
-                // this.props.history.push('/clientview');
-                this.props.history.push('/');
+                if (localStorage.getItem("instructor") === "true") {
+                    this.props.history.push('/instructor');
+                } else {
+                    this.props.history.push('/clientview');
+                }
             })
     }
 
@@ -46,13 +49,13 @@ class Signup extends React.Component {
                     value={this.state.newCredentials.password}
                     onChange={this.handleChange}
                 />
-                <input 
+                <input
                     type="checkbox"
                     name="instructor"
                     value={this.state.newCredentials.instructor}
                     onChange={this.handleChange}
                 />
-                <button>Log In</button>
+                <button>Sign Up</button>
             </form>
         )
     }
@@ -65,6 +68,6 @@ class Signup extends React.Component {
 // })
 
 export default connect(
-    null, 
+    null,
     { signup }
-)( Signup );
+)(Signup);

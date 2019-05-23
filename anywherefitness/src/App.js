@@ -10,13 +10,13 @@ import PrivateRoute from './PrivateRoute';
 import ClassForm from './components/ClassForm/ClassForm';
 
 function App() {
+  // console.log(Boolean(localStorage.getItem("token")));
   return (
     <Router>
-      {localStorage.getItem("token")
+      { localStorage.getItem("token")
         ?
         <nav>
-          <Link to="/clientview">Client</Link>
-          <Link to="/PLACEHOLDER">PLACEHOLDER</Link>
+ 
         </nav>
         :
         <nav>
