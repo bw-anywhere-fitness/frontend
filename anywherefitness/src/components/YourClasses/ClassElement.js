@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 
 import { fetchStudents } from "../../actions/instructorActions";
 
+import Student from "./Student"
+
 class ClassElement extends React.Component {
   constructor(props) {
     super(props);
@@ -31,7 +33,7 @@ class ClassElement extends React.Component {
         {this.state.students.length == 0 ? (
           <p>No students have signed up yet...</p>
         ) : (
-          this.state.students.map(student => <p>{student.username}</p>)
+          this.state.students.map(student => <Student classId={this.props.classElem.id} student={student}/>)
         )}
       </div>
     );

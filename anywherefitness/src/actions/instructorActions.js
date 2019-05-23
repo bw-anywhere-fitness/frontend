@@ -71,3 +71,20 @@ export const fetchStudents = (id) => dispatch => {
       dispatch({ type: FETCH_STUDENTS_FAILURE, payload: err.response.data });
     });
 };
+
+export const UPDATE_START = 'UPDATE_START';
+export const UPDATE_SUCCESS = 'UPDATE_SUCCESS';
+export const UPDATE_FAILURE = 'UPDATE_FAILURE';
+export const updatePunchcard = (classId, student) => dispatch => {
+  dispatch({ type: UPDATE_START });
+  return axiosWithAuth()
+    .put(`https://anywhere-fitness.herokuapp.com/classes/${classId}/list/update`, student)
+    .then(res => {
+      console.log(res);
+      dispatch({ type: UPDATE_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: UPDATE_FAILURE, payload: err.response.data });
+    });
+};

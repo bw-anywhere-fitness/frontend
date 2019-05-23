@@ -25,6 +25,15 @@
             border-bottom: 1px solid gray;
             padding-bottom: 10px;
         }
+
+        .student-elem {
+            display: flex;
+            align-items: center;
+
+            .student-name {
+                margin-right: 20px;
+            }
+        }
     }
 
 }
