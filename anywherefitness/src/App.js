@@ -14,17 +14,7 @@ function App() {
   // console.log(Boolean(localStorage.getItem("token")));
   return (
     <Router>
-      { localStorage.getItem("token")
-        ?
-        <nav>
-          <Link to="/clientview">Client View</Link>
-        </nav>
-        :
-        <nav>
-        </nav>
-      }
-
-
+      <Route exact path="/" component={Login} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/signup" component={Signup} />
       <PrivateRoute exact path="/instructor" component={InstructorHome} />
