@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import InstructorHome from './components/InstructorHome';
+import YourClasses from "./components/YourClasses/YourClasses"
 import Login from './components/Login';
 import Signup from './components/Signup';
 import ClientView from './components/ClientComponents/ClientView';
@@ -30,6 +31,7 @@ function App() {
       <Route exact path="/signup" component={Signup} />
       <PrivateRoute exact path="/instructor" component={InstructorHome} />
       <PrivateRoute exact path="/instructor/addclass" component={ClassForm} />
+      <PrivateRoute exact path="/instructor/yourclasses" component={YourClasses} />
       <PrivateRoute path="/clientview" component={ClientView} />
 
     </Router>

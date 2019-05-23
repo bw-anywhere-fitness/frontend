@@ -3,12 +3,9 @@ import "./ClassForm.scss";
 
 import { addClass } from "../../actions/instructorActions";
 import { connect } from "react-redux";
-// import Friend from "./Friend";
 import { Link } from "react-router-dom";
 import Loader from "react-loader-spinner";
 import CustomizedSnackbar from "../MaterialUI/CustomizedSnackBars"
-
-import axios from "axios";
 
 class ClassForm extends React.Component {
   constructor(props) {
@@ -86,7 +83,10 @@ class ClassForm extends React.Component {
         <div className="navigation">
           <h2>Hello!</h2>
           <nav>
-            <Link className="classes nav-item" exact to="/instructor/">
+            <Link className="home nav-item" exact to="/instructor/">
+              Home
+            </Link>
+            <Link className="classes nav-item" exact to="/instructor/yourclasses">
               Your classes
             </Link>
             <Link

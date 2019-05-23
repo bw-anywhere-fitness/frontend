@@ -7,7 +7,13 @@ import {
   FETCH_CLASSES_SUCCESS,
   DEL_CLASS_FAILURE,
   DEL_CLASS_START,
-  DEL_CLASS_SUCCESS
+  DEL_CLASS_SUCCESS,
+  FETCH_STUDENTS_FAILURE,
+  FETCH_STUDENTS_START,
+  FETCH_STUDENTS_SUCCESS,
+  UPDATE_FAILURE,
+  UPDATE_SUCCESS,
+  UPDATE_START
 } from "../actions";
 
 const initialState = {
@@ -15,7 +21,10 @@ const initialState = {
   addingClass: false,
   error: "",
   fetchingClasses: false,
-  deletingClass: false
+  deletingClass: false,
+  fetchingStudents: false,
+  students: [],
+  updatingPunchcard: false
 };
 
 export const instructorReducer = (state = initialState, action) => {
@@ -61,18 +70,51 @@ export const instructorReducer = (state = initialState, action) => {
         deletingClass: true
       };
     case DEL_CLASS_SUCCESS:
-      console.log(action.payload)
+      console.log(action.payload);
       return {
         ...state,
         deletingClass: false,
         classes: [...action.payload]
       };
-      case DEL_CLASS_FAILURE:
-        return {
-          ...state,
-          deletingClass: false,
-          error: action.payload.message
-        };
+    case DEL_CLASS_FAILURE:
+      return {
+        ...state,
+        deletingClass: false,
+        error: action.payload.message
+      };
+    case FETCH_STUDENTS_START:
+      return {
+        ...state,
+        fetchingStudents: true
+      };
+    case FETCH_STUDENTS_SUCCESS:
+      return {
+        ...state,
+        fetchingStudents: false,
+        students: [...action.payload]
+      };
+    case FETCH_STUDENTS_FAILURE:
+      return {
+        ...state,
+        fetchingStudents: false,
+        error: action.payload.message
+      };
+    case UPDATE_START:
+      return {
+        ...state,
+        updatingPunchcard: true
+      };
+    case UPDATE_SUCCESS:
+      return {
+        ...state,
+        updatingPunchcard: false
+      };
+    case UPDATE_FAILURE:
+      return {
+        ...state,
+        updatingPunchcard: false
+      };
+
     default:
       return state;
   }

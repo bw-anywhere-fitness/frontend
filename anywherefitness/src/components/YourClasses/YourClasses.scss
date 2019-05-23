@@ -1,0 +1,39 @@
+.yourclasses-container {
+    font-family: "Oxygen";
+    background: #E6E6E6; 
+    height: 100vh;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .yourclass-element {
+        width: 50%;
+        border: 2px solid black;
+        box-shadow: 2px 2px 2px gray;
+        border-radius: 10px;
+        padding: 10px 50px 10px 10px;
+        margin-bottom: 20px;
+        line-height: 1.5;
+
+        .yourclass-element-title {
+            font-weight: bold;
+        }
+
+        .yourclass-location {
+            margin-bottom: 10px;
+            border-bottom: 1px solid gray;
+            padding-bottom: 10px;
+        }
+
+        .student-elem {
+            display: flex;
+            align-items: center;
+
+            .student-name {
+                margin-right: 20px;
+            }
+        }
+    }
+
+}

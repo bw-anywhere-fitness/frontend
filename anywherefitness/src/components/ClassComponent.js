@@ -20,11 +20,7 @@ function ClassComponent(props) {
       </div>
       <div className="class-element-buttons">
         <button onClick={e => props.delete(e, props.classProp.id)}>
-          {props.deletingClass ? (
-            <Loader type="ThreeDots" color="#ffffff" height="7.5" width="26" />
-          ) : (
-            "DELETE"
-          )}
+          DELETE
         </button>
       </div>
     </div>
