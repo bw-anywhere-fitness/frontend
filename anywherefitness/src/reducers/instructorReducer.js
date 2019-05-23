@@ -7,7 +7,10 @@ import {
   FETCH_CLASSES_SUCCESS,
   DEL_CLASS_FAILURE,
   DEL_CLASS_START,
-  DEL_CLASS_SUCCESS
+  DEL_CLASS_SUCCESS,
+  FETCH_STUDENTS_FAILURE,
+  FETCH_STUDENTS_START,
+  FETCH_STUDENTS_SUCCESS
 } from "../actions";
 
 const initialState = {
@@ -15,7 +18,9 @@ const initialState = {
   addingClass: false,
   error: "",
   fetchingClasses: false,
-  deletingClass: false
+  deletingClass: false,
+  fetchingStudents: false,
+  students: []
 };
 
 export const instructorReducer = (state = initialState, action) => {
@@ -73,6 +78,23 @@ export const instructorReducer = (state = initialState, action) => {
           deletingClass: false,
           error: action.payload.message
         };
+        case FETCH_STUDENTS_START:
+          return {
+            ...state,
+            fetchingStudents: true
+          };
+        case FETCH_STUDENTS_SUCCESS:
+          return {
+            ...state,
+            fetchingStudents: false,
+            students: [...action.payload]
+          };
+        case FETCH_STUDENTS_FAILURE:
+          return {
+            ...state,
+            fetchingStudents: false,
+            error: action.payload.message
+          };
     default:
       return state;
   }

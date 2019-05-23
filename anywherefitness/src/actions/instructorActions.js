@@ -18,7 +18,6 @@ export const getData = (id) => dispatch => {
     });
 };
 
-
 export const ADD_CLASS_START = "ADD_CLASS_START";
 export const ADD_CLASS_SUCCESS = "ADD_CLASS_SUCCESS";
 export const ADD_CLASS_FAILURE = "ADD_CLASS_FAILURE";
@@ -35,7 +34,6 @@ export const addClass = newClass => dispatch => {
       dispatch({ type: ADD_CLASS_FAILURE, payload: err.response.data });
     });
 };
-
 
 export const DEL_CLASS_START = 'DEL_CLASS_START';
 export const DEL_CLASS_SUCCESS = 'DEL_CLASS_SUCCESS';
@@ -54,5 +52,22 @@ export const deleteClass = (classId, instructorId) => dispatch => {
     .catch(err => {
       console.log(err);
       dispatch({ type: DEL_CLASS_FAILURE, payload: err.data });
+    });
+};
+
+export const FETCH_STUDENTS_START = 'FETCH_STUDENTS_START';
+export const FETCH_STUDENTS_SUCCESS = 'FETCH_STUDENTS_SUCCESS';
+export const FETCH_STUDENTS_FAILURE = 'FETCH_STUDENTS_FAILURE';
+export const fetchStudents = (id) => dispatch => {
+  dispatch({ type: FETCH_STUDENTS_START });
+  axiosWithAuth()
+    .get(`https://anywhere-fitness.herokuapp.com/classes/${id}/list`)
+    .then(res => {
+      console.log(res);
+      dispatch({ type: FETCH_STUDENTS_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: FETCH_STUDENTS_FAILURE, payload: err.response.data });
     });
 };
