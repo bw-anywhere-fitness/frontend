@@ -40,8 +40,8 @@ class Signup extends React.Component {
         return (
             <div className="login-container">
                 <nav className="navigation">
-                    <Link to="/login">Login</Link>
-                    <Link to="/signup">Signup</Link>
+                    <Link className="nav-login" to="/login">Login</Link>
+                    <Link className="nav-signup" to="/signup">Signup</Link>
                 </nav>
                 <div className="form-container">
                     <form onSubmit={this.signup}>

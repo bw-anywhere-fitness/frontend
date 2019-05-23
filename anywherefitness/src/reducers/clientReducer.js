@@ -64,7 +64,6 @@ export const clientReducer = (state = initialState, action) => {
         return {
             ...state,
             deletingClass: false,
-            clientClassList: action.payload
         }
         default:
             return state;
