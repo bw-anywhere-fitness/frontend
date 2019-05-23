@@ -58,10 +58,13 @@ export const DELETE_CLASS_START = "DELETE_CLASS_START";
 export const DELETE_CLASS_SUCCESS = "DELETE_CLASS_SUCCESS";
 export const DELETE_CLASS_FAILURE = "DELETE_CLASS_FAILURE`";
 
-export const deleteClass = (class_id, user_id) => dispatch => {
+export const deleteClientClass = (class_id, user_id) => dispatch => {
     dispatch({ type: DELETE_CLASS_START });
     // console.log("class ID", class_id);
-    axiosWithAuth().delete(`https://anywhere-fitness.herokuapp.com/classes/remove/${class_id}`, {id:user_id} )
+    console.log("classID for delete API call", class_id);
+    console.log("userID for API call", user_id);
+    axiosWithAuth().delete(`https://anywhere-fitness.herokuapp.com/classes/remove/${class_id}/client`, {user_id:user_id} )
+    // axiosWithAuth().delete(`https://anywhere-fitness.herokuapp.com/classes/remove/${class_id}`, {id:user_id} )
         .then(res => {
             console.log("deleting class response", res);
             dispatch({ type: DELETE_CLASS_SUCCESS, payload: res.data })

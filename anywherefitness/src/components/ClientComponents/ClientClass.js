@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deleteClass } from '../../actions';
+import { deleteClientClass } from '../../actions';
 
 class ClientClass extends React.Component {
 
-    deleteClass = e => {
+    deleteClientClass = e => {
         e.preventDefault();
-        console.log("id", localStorage.getItem("id")); 
+        console.log("user id", localStorage.getItem("id")); 
         console.log("class id", this.props.id);   
-        this.props.deleteClass(this.props.id, localStorage.getItem("id"));
+        this.props.deleteClientClass(this.props.id, localStorage.getItem("id"));
     }
 
     render() {
@@ -18,7 +18,7 @@ class ClientClass extends React.Component {
                 <p>{this.props.schedule}</p>
                 <p>{this.props.location}</p>
                 <p>Classes remaining: {this.props.uses_remaining}</p>
-                <button onClick={this.deleteClass}>Delete</button>
+                <button onClick={this.deleteClientClass}>Delete</button>
             </div>
         )
     }
@@ -26,5 +26,5 @@ class ClientClass extends React.Component {
 
 export default connect(
     null ,
-    { deleteClass }
+    { deleteClientClass }
 )(ClientClass);

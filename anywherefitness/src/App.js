@@ -16,7 +16,7 @@ function App() {
       { localStorage.getItem("token")
         ?
         <nav>
- 
+          <Link to="/clientview">Client View</Link>
         </nav>
         :
         <nav>

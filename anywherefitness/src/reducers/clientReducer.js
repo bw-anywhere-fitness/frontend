@@ -63,7 +63,8 @@ export const clientReducer = (state = initialState, action) => {
         case DELETE_CLASS_SUCCESS:
         return {
             ...state,
-            deletingClass: false
+            deletingClass: false,
+            clientClassList: action.payload
         }
         default:
             return state;
