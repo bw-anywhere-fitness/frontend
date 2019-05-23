@@ -4,7 +4,9 @@ import "./YourClasses.scss";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import {fetchStudents} from "../../actions/instructorActions"
+import { fetchStudents } from "../../actions/instructorActions";
+
+import ClassElement from "./ClassElement"
 
 class YourClasses extends React.Component {
   constructor(props) {
@@ -20,32 +22,25 @@ class YourClasses extends React.Component {
             <Link className="home nav-item" exact to="/instructor/">
               Home
             </Link>
-            <Link className="classes nav-item" exact to="/instructor/yourclasses">
+            <Link
+              className="classes nav-item"
+              exact
+              to="/instructor/yourclasses"
+            >
               Your classes
             </Link>
-            <Link className="add-class nav-item" exact to="/instructor/addclass">
+            <Link
+              className="add-class nav-item"
+              exact
+              to="/instructor/addclass"
+            >
               Add class
             </Link>
           </nav>
         </div>
         <div className="yourclasses-container">
           {this.props.classes.map(classElem => {
-            this.props.fetchStudents(classElem.id);
-            const students = this.props.students;
-            console.log(students);
-            return (
-              <div className="yourclass-element">
-              <h2 className="yourclass-element-title">{classElem.name}</h2>
-              <h2>{classElem.schedule}</h2>
-              <h2 className="yourclass-location">{classElem.location}</h2>
-              <p className="yourclass-element-subtitle">Students:</p>
-              {students.length == 0 ?
-                <p>No students have signed up yet...</p>
-                :
-                students.map(student => <p>{student.username}</p>)
-              }
-            </div>
-            )
+            return <ClassElement classElem={classElem} />
           })}
         </div>
       </div>

@@ -60,7 +60,7 @@ export const FETCH_STUDENTS_SUCCESS = 'FETCH_STUDENTS_SUCCESS';
 export const FETCH_STUDENTS_FAILURE = 'FETCH_STUDENTS_FAILURE';
 export const fetchStudents = (id) => dispatch => {
   dispatch({ type: FETCH_STUDENTS_START });
-  axiosWithAuth()
+  return axiosWithAuth()
     .get(`https://anywhere-fitness.herokuapp.com/classes/${id}/list`)
     .then(res => {
       console.log(res);
